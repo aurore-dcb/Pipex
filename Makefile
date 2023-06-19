@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
+#    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/15 16:20:20 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/15 16:26:38 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/19 12:17:39 by aurore           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-SRCS =	
+SRCS = sources/main.c
 
 OBJS = ${SRCS:.c=.o}
 
