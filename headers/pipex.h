@@ -8,6 +8,7 @@
 char *ft_trim(char *s);
 char **get_paths(char **env);
 void display_tab(char **tab);
+char *find_path(char **paths, char *cmd);
 
 
 #endif

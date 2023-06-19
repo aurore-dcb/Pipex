@@ -41,15 +41,28 @@ char **get_paths(char **env)
     return (NULL);
 }
 
-char *find_path(char **paths)
+char *find_path(char **paths, char *cmd)
 {
     int i;
+    char *slash;
+    char *all_path;
 
     i = 0;
     while (paths[i])
     {
+        slash = ft_strjoin(paths[i], "/");
+        if (!slash)
+            return (NULL);
+        all_path = ft_strjoin(slash, cmd); // a free
+        free(slash);
+        if (!all_path)
+            return (NULL);
+        if (access(all_path, F_OK | R_OK | X_OK) == 0)
+            return (all_path);
         i++;
+        free(all_path);
     }
+    return (NULL);
 }
 
 void display_tab(char **tab)
