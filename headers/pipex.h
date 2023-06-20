@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/20 15:50:07 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:58:37 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_trim2(char *s);
 char	**get_args(char *cmd);
 
 // process_child.c
-int process_child(int *fd, char **argv, char **env);
+int	process_child(int *fd, char **argv, char **env, char **paths);
 
 // process_parent.c
 int process_parrent(int *fd, char **argv, char **env, char **paths, int pid);
