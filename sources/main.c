@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/19 15:20:32 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/19 18:27:24 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int main(int argc, char **argv, char **env)
 {
     pid_t pid;
-    char *cmd;
-    char **paths;
+    char *cmd; // free
+    char **paths; // free
 
     (void)argc;
     (void)argv;
@@ -29,10 +29,9 @@ int main(int argc, char **argv, char **env)
     if (pid == 0)
     {
         ft_printf("Je suis l'enfant.\n");
-        paths = get_paths(env); // a free
+        paths = get_paths(env);
         if (!paths)
             return (ft_printf("Error\nPaths null\n"), 1);
-        // display_tab(paths);
         cmd = find_path(paths, "ls");
         if (!cmd)
             return (ft_printf("Error\nCan't find cmd\n"), 1);
@@ -42,6 +41,8 @@ int main(int argc, char **argv, char **env)
         dup2(fd, STDOUT_FILENO);
         close(fd);
         execve(cmd, argv, env);
+        free(cmd);
+        free_path(paths);
     }
     else
     {

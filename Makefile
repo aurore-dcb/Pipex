@@ -6,14 +6,15 @@
 #    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/15 16:20:20 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/19 13:48:05 by aurore           ###   ########.fr        #
+#    Updated: 2023/06/19 18:26:11 by aurore           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 SRCS =	sources/main.c \
-		sources/get_paths.c
+		sources/get_paths.c \
+		sources/frees.c
 
 OBJS = ${SRCS:.c=.o}
 
