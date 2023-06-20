@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:00:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/20 13:52:59 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/20 15:37:12 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,16 @@ char *get_cmd(char *s)
     return (cmd);
 }
 
-char *ft_trim2(char *s)
-{
-    int i;
-    char *res;
-
-    i = 0;
-    while (*s && *s == ' ')
-	{
-		++s;
-		i++;
-	}
-    while (*s && *s != ' ')
-	{
-		++s;
-		i++;
-	}
-    while (*s && *s == ' ')
-        ++s;
-    while (*(s + i))
-    {
-        i++;
-    }
-    res = ft_substr(s, 0, i);
-    return (res);
-}
-
 char **get_args(char *cmd)
 {
+    char **args; //a free;
     
+    args = ft_split(cmd, ' ');
+    // free(lign);
+    if (!args)
+    {
+        free_path(args);
+        return (NULL);
+    }
+    return (args);
 }
