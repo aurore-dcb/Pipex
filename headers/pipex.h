@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/20 15:58:37 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:30:10 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,45 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
+typedef struct s_parsing
+{
+	int				argc;
+	char			**argv;
+	char			**env;
+	char			**paths;
+	int				fd[2];
+	char			**cmd1;
+	char			**cmd2;
+}					t_parsing;
+
+typedef struct s_pid
+{
+	pid_t			pid;
+	struct s_pid	*next;
+}					t_pid;
+
 // get_path.c
-char	*ft_trim(char *s);
-char	**get_paths(char **env);
-void	display_tab(char **tab);
-char	*find_path(char **paths, char *cmd);
+char				*ft_trim(char *s);
+char				**get_paths(char **env);
+void				display_tab(char **tab);
+char				*find_path(char **paths, char *cmd);
 
 // frees.c
-void	free_path(char **tab);
+void				free_path(char **tab);
 
 // get_cmd.c
-char	*get_cmd(char *s);
-char	*ft_trim2(char *s);
-char	**get_args(char *cmd);
+char				*get_cmd(char *s);
+char				*ft_trim2(char *s);
+char				**get_args(char *cmd);
 
 // process_child.c
-int	process_child(int *fd, char **argv, char **env, char **paths);
+int					first_process(t_parsing *data, t_pid **pids);
 
 // process_parent.c
-int process_parrent(int *fd, char **argv, char **env, char **paths, int pid);
+int					last_process(t_parsing *data, t_pid **pids);
 
+// parsing.c
+int					parsing(int argc, char **argv, char **env, t_parsing *data);
+t_pid				*ft_lstnew_pipex(pid_t pid);
+void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
 #endif
