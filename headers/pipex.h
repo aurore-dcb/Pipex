@@ -6,13 +6,14 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 14:30:10 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:43:33 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/wait.h>
@@ -25,8 +26,12 @@ typedef struct s_parsing
 	char			**env;
 	char			**paths;
 	int				fd[2];
-	char			**cmd1;
-	char			**cmd2;
+	char			**first_cmd;
+	char			*first_cmd_path;
+	char			**last_cmd;
+	char			*last_cmd_path;
+	int				infile;
+	int				outfile;
 }					t_parsing;
 
 typedef struct s_pid
@@ -43,6 +48,7 @@ char				*find_path(char **paths, char *cmd);
 
 // frees.c
 void				free_path(char **tab);
+void				wait_fct(t_pid **pids);
 
 // get_cmd.c
 char				*get_cmd(char *s);
@@ -59,4 +65,5 @@ int					last_process(t_parsing *data, t_pid **pids);
 int					parsing(int argc, char **argv, char **env, t_parsing *data);
 t_pid				*ft_lstnew_pipex(pid_t pid);
 void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
+
 #endif
