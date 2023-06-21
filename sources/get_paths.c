@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:24 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/20 13:39:18 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:49:36 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*find_path(char **paths, char *cmd)
 		slash = ft_strjoin(paths[i], "/");
 		if (!slash)
 			return (NULL);
-		all_path = ft_strjoin(slash, cmd); // a free
+		all_path = ft_strjoin(slash, cmd);
 		free(slash);
 		if (!all_path)
 			return (NULL);

@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:42:19 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:34:56 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:57:09 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 	data->infile = open(argv[1], O_RDONLY);
 	if (data->infile == -1)
 		return (ft_printf("Error\nCan't create/open file\n"), 0);
-	data->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 777);
+	data->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0646);
 	if (data->outfile == -1)
 		return (ft_printf("Error\nCan't create/open file\n"), 0);
 }

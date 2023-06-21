@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:44:12 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:55:11 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	t_parsing data;
-	t_pid *pids;
+	t_parsing	data;
+	t_pid		*pids;
 
-	parsing(argc, argv, env, &data);
+	if (!parsing(argc, argv, env, &data))
+		return (1);
 	data.argc = argc;
 	data.argv = argv;
 	data.env = env;

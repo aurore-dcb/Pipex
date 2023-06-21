@@ -6,12 +6,12 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:43:33 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/21 15:48:58 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
 # include <errno.h>
 # include <stdio.h>
