@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:42:19 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 11:19:59 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 11:28:03 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 		close(data->infile);
 		return (ft_printf("Error\nCan't create/open file\n"), 0);
 	}
+	return (1);
 }
 
 t_pid	*ft_lstnew_pipex(pid_t pid)

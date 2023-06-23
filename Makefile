@@ -6,7 +6,7 @@
 #    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/15 16:20:20 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/21 14:39:00 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/23 11:26:02 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS = sources/main.c \
 
 OBJS = ${SRCS:sources/%.c=objects/%.o}
 
-CC = gcc
+CC = cc
 CFLAGS = #-Wall -Wextra -Werror
 RM = rm -rf
 

@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:07:42 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 08:55:46 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 11:27:18 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ int	first_process(t_parsing *data, t_pid **pids)
 		perror("Error while command execution");
 	}
 	ft_lstadd_back_pipex(pids, ft_lstnew_pipex(pid));
+	return (1);
 }
