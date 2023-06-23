@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:00:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:50:14 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 11:23:21 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ char	*get_cmd(char *s)
 		i++;
 	while (s[i] && s[i++] != ' ')
 		count++;
-	i = 0;
 	cmd = malloc(sizeof(char) * (count + 1));
+	if (!cmd)
+		return (NULL);
+	i = 0;
 	count = 0;
 	while (s[i] && s[i] == ' ')
 		i++;
 	while (s[i] && s[i] != ' ')
-	{
-		cmd[count] = s[i];
-		count++;
-		i++;
-	}
+		cmd[count++] = s[i++];
 	cmd[i] = 0;
 	return (cmd);
 }
@@ -48,9 +46,6 @@ char	**get_args(char *cmd)
 
 	args = ft_split(cmd, ' ');
 	if (!args)
-	{
-		free_path(args);
 		return (NULL);
-	}
 	return (args);
 }
