@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:55:11 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 09:24:22 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,24 @@ int	main(int argc, char **argv, char **env)
 
 	if (!parsing(argc, argv, env, &data))
 		return (1);
+	pids = NULL;
 	data.argc = argc;
 	data.argv = argv;
 	data.env = env;
 	if (pipe(data.fd) == -1)
 	{
 		ft_printf("Error\n");
-		return (1);
-		//fct free all
+		return (free_all(&data));
 	}
-	first_process(&data, &pids);
-	last_process(&data, &pids);
-	wait_fct(&pids);
+	if (!first_process(&data, &pids))
+	{
+		ft_printf("Error\n");
+		return (free_all(&data));
+	}
+	if (!last_process(&data, &pids))
+	{
+		ft_printf("Error\n");
+		return (free_all(&data));
+	}
+	wait_fct(&pids, &data);
 }

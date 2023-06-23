@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:48:58 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 09:08:24 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ char				*find_path(char **paths, char *cmd);
 
 // frees.c
 void				free_path(char **tab);
-void				wait_fct(t_pid **pids);
+void				wait_fct(t_pid **pids, t_parsing *data);
+int				free_all(t_parsing *data);
 
 // get_cmd.c
 char				*get_cmd(char *s);
