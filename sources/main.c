@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 11:19:51 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 14:59:27 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ void	initialise(t_parsing *data)
 	data->last_cmd = NULL;
 	data->first_cmd_path = NULL;
 	data->last_cmd_path = NULL;
+	data->middle_cmd = NULL;
+	data->middle_cmd_path = NULL;
+	data->index = 1;
 }
-
+// CREER UN TUBE (fd[2]) POUR CHAQUE NOUVELLE COMMANDE
 int	main(int argc, char **argv, char **env)
 {
 	t_parsing	data;
@@ -39,7 +42,12 @@ int	main(int argc, char **argv, char **env)
 		ft_printf("Error\n");
 		return (free_all(&data));
 	}
-	if (!first_process(&data, &pids) || !last_process(&data, &pids))
+	// if (!middle_process(&data, &pids))
+	// {
+	// 	ft_printf("Error\n");
+	// 	return (free_all(&data));
+	// }
+	if (!first_process(&data, &pids) || !middle_process(&data, &pids) || !last_process(&data, &pids))
 	{
 		ft_printf("Error\n");
 		return (free_all(&data));

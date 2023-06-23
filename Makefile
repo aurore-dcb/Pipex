@@ -6,7 +6,7 @@
 #    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/15 16:20:20 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/23 11:26:02 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/23 13:52:36 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,13 @@ SRCS = sources/main.c \
 		sources/get_cmd.c \
 		sources/first_process.c \
 		sources/last_process.c \
-		sources/utils.c
+		sources/utils.c \
+		sources/middle_process.c
 
 OBJS = ${SRCS:sources/%.c=objects/%.o}
 
 CC = cc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 LIBFT_DIR = libft
@@ -41,21 +42,16 @@ objects:
 	mkdir -p objects
 
 objects/%.o: sources/%.c | objects
-	${CC} ${CFLAGS} ${INCLUDE} -o $@ -c $<
+	${CC} ${CFLAGS} -o $@ -c $<
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} 
 	${RM} objects
 	make -C libft clean
 
 fclean: clean
 	${RM} ${NAME}
 	make -C libft fclean
-
-norm:
-	norminette sources
-	norminette libft
-	norminette headers
 
 re: fclean all
 

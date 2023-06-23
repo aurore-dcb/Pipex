@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:42:19 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 11:28:03 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 14:20:52 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 int	parsing(int argc, char **argv, char **env, t_parsing *data)
 {
-	if (argc != 5)
+	(void)argc;
+	// if (argc != 5)
+	// 	return (ft_printf("Error\nWrong number of arguments\n"), 0);
+	if (argc < 5)
 		return (ft_printf("Error\nWrong number of arguments\n"), 0);
 	if (!env)
 		return (ft_printf("No env\n"), 0);
@@ -23,7 +26,7 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 	if (!data->paths)
 		return (ft_printf("Error\nPaths\n"), 0);
 	data->first_cmd = get_args(argv[2]);
-	data->last_cmd = get_args(argv[3]);
+	data->last_cmd = get_args(argv[argc - 2]);
 	if (!data->first_cmd || !data->last_cmd)
 		return (ft_printf("Error\nCommand\n"), 0);
 	data->first_cmd_path = find_path(data->paths, data->first_cmd[0]);
@@ -33,7 +36,7 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 	data->infile = open(argv[1], O_RDONLY);
 	if (data->infile == -1)
 		return (ft_printf("Error\nCan't create/open file\n"), 0);
-	data->outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0646);
+	data->outfile = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0646);
 	if (data->outfile == -1)
 	{
 		close(data->infile);
