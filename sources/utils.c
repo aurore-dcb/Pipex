@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:42:19 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/21 15:57:09 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/23 09:36:53 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	parsing(int argc, char **argv, char **env, t_parsing *data)
 {
 	if (argc != 5)
-		return (ft_printf("Error\nWrong number of arguments\n"), 1);
+		return (ft_printf("Error\nWrong number of arguments\n"), 0);
 	if (!env)
 		return (ft_printf("No env\n"), 0);
 	data->paths = get_paths(env);
