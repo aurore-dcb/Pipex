@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   middle_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:34:42 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 10:20:27 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 15:06:34 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,30 @@ int middle(t_parsing *data, t_pid **pids)
 	while (i < data->argc - 2)
 	{
 		if (!middle_process(data, pids, i))
+		{
+			fprintf(stdout, "sortie\n");
 			return (0);
+		}
 		i++;
 	}
 	return (1);
 }
 
+char	**get_args2(char *cmd)
+{
+	char	**args;
+
+	(void)cmd;
+	// args = ft_split(cmd, ' ');
+	args = NULL;
+	if (!args)
+		return (NULL);
+	return (args);
+}
+
 int	middle_process(t_parsing *data, t_pid **pids, int index)
 {
 	pid_t	pid;
-	(void)index;
 
 	if (pipe(data->fd) == -1)
 		return (ft_printf("Error pipe\n"), 0);
@@ -41,14 +55,12 @@ int	middle_process(t_parsing *data, t_pid **pids, int index)
 			|| close(data->fd[1]) == -1)
 			return (0);
 		data->middle_cmd = get_args(data->argv[index]);
-		if (!data->middle_cmd)
+		data->middle_cmd_path = find_path(data->paths, data->middle_cmd[0]);
+		// data->middle_cmd_path = NULL;
+		if (data->middle_cmd_path == NULL)
 		{
-			ft_printf("error\n");
 			return (0);
 		}
-		data->middle_cmd_path = find_path(data->paths, data->middle_cmd[0]);
-		if (!data->middle_cmd_path)
-			return (0);
 		execve(data->middle_cmd_path, data->middle_cmd, data->env);
 		perror("Error while command execution");
 	}

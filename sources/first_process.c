@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:07:42 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 09:37:35 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 14:14:04 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	first_process(t_parsing *data, t_pid **pids)
 	pid_t	pid;
 
 	if (pipe(data->fd) == -1)
-		return (ft_printf("Error pipe\n"), 0);
+		return (ft_printf("Error -> Pipe\n"), 0);
 	pid = fork();
 	if (pid == 0)
 	{

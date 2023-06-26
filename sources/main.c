@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 10:25:58 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 14:43:48 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	main(int argc, char **argv, char **env)
 	if (!first_process(&data, &pids) || !middle(&data, &pids)
 		|| !last_process(&data, &pids))
 	{
-		free_all(&data);
+		// free_all(&data);
 		ft_printf("Error\n");
-		return (1);
+		exit(127);
 	}
 	wait_fct(&pids, &data);
 }
