@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 13:50:00 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 10:04:54 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ char				*find_path(char **paths, char *cmd);
 void				error_free(t_parsing *data);
 void				free_tab(char **tab);
 void				wait_fct(t_pid **pids, t_parsing *data);
-int					free_all(t_parsing *data);
+void					free_all(t_parsing *data);
 
 // get_cmd.c
 char				*get_cmd(char *s);
-char				*ft_trim2(char *s);
 char				**get_args(char *cmd);
 
 // process_child.c
+int					util(t_parsing *data, t_pid **child, pid_t pid_child);
 int					first_process(t_parsing *data, t_pid **pids);
 
 // process_parent.c
@@ -72,6 +72,7 @@ t_pid				*ft_lstnew_pipex(pid_t pid);
 void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
 
 // middle_process.c
-int					middle_process(t_parsing *data, t_pid **pids);
+int					middle(t_parsing *data, t_pid **pids);
+int					middle_process(t_parsing *data, t_pid **pids, int index);
 
 #endif

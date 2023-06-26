@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 14:59:27 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 10:25:58 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	initialise(t_parsing *data)
 	data->middle_cmd_path = NULL;
 	data->index = 1;
 }
-// CREER UN TUBE (fd[2]) POUR CHAQUE NOUVELLE COMMANDE
+
 int	main(int argc, char **argv, char **env)
 {
 	t_parsing	data;
@@ -37,20 +37,12 @@ int	main(int argc, char **argv, char **env)
 	if (!parsing(argc, argv, env, &data))
 		return (error_free(&data), 1);
 	pids = NULL;
-	if (pipe(data.fd) == -1)
+	if (!first_process(&data, &pids) || !middle(&data, &pids)
+		|| !last_process(&data, &pids))
 	{
+		free_all(&data);
 		ft_printf("Error\n");
-		return (free_all(&data));
-	}
-	// if (!middle_process(&data, &pids))
-	// {
-	// 	ft_printf("Error\n");
-	// 	return (free_all(&data));
-	// }
-	if (!first_process(&data, &pids) || !middle_process(&data, &pids) || !last_process(&data, &pids))
-	{
-		ft_printf("Error\n");
-		return (free_all(&data));
+		return (1);
 	}
 	wait_fct(&pids, &data);
 }

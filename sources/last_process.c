@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 15:43:21 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 15:05:17 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 09:38:38 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,18 @@
 int	last_process(t_parsing *data, t_pid **pids)
 {
 	pid_t	pid;
-	int pipe_fd[2];
 
-	pipe(pipe_fd);
+	if (pipe(data->fd) == -1)
+		return (ft_printf("Error pipe\n"), 0);
 	pid = fork();
 	if (pid == 0)
 	{
-		if (dup2(data->fd[0], STDIN_FILENO) == -1 || dup2(data->outfile,
-				STDOUT_FILENO) == -1 || close(data->fd[1]) == -1
-			|| close(data->fd[0]) == -1)
+		if (dup2(data->outfile, STDOUT_FILENO) == -1 || close(data->fd[0]) == -1
+			|| close(data->fd[1]) == -1)
 			return (0);
 		execve(data->last_cmd_path, data->last_cmd, data->env);
 		perror("Error while command execution");
 	}
-	// close(data->fd[0]); // Fermer l'extrémité inutilisée du tube
-	// close(data->fd[1]);
-	// data->fd[0] = pipe_fd[0]; // Mettre à jour le descripteur de fichier d'entrée pour le prochain processus
-	// data->fd[1] = pipe_fd[1]; 
-	ft_lstadd_back_pipex(pids, ft_lstnew_pipex(pid));
+	util(data, pids, pid);
 	return (1);
 }

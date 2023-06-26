@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:42:19 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 14:20:52 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 09:41:33 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int	parsing(int argc, char **argv, char **env, t_parsing *data)
 {
-	(void)argc;
 	// if (argc != 5)
 	// 	return (ft_printf("Error\nWrong number of arguments\n"), 0);
 	if (argc < 5)

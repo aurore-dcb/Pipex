@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:50:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 11:20:18 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/26 10:25:05 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	error_free(t_parsing *data)
 {
+	ft_printf("Error\n");
 	if (data->paths)
 		free_tab(data->paths);
 	if (data->first_cmd)
@@ -43,7 +44,9 @@ void	free_tab(char **tab)
 void	wait_fct(t_pid **pids, t_parsing *data)
 {
 	t_pid	*tmp;
+	int		i;
 
+	i = 0;
 	close(data->fd[0]);
 	close(data->fd[1]);
 	while (*pids)
@@ -52,12 +55,13 @@ void	wait_fct(t_pid **pids, t_parsing *data)
 		waitpid(((*pids)->pid), NULL, 0);
 		*pids = (*pids)->next;
 		free(tmp);
+		i++;
 	}
 	free(*pids);
 	free_all(data);
 }
 
-int	free_all(t_parsing *data)
+void	free_all(t_parsing *data)
 {
 	close(data->infile);
 	close(data->outfile);
@@ -66,5 +70,4 @@ int	free_all(t_parsing *data)
 	free_tab(data->last_cmd);
 	free(data->first_cmd_path);
 	free(data->last_cmd_path);
-	return (1);
 }
