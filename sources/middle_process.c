@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 13:34:42 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 15:06:34 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/26 15:33:30 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int middle(t_parsing *data, t_pid **pids)
 		if (!middle_process(data, pids, i))
 		{
 			fprintf(stdout, "sortie\n");
-			return (0);
+			// return (0);
+			exit(errno);
 		}
 		i++;
 	}
@@ -59,6 +60,7 @@ int	middle_process(t_parsing *data, t_pid **pids, int index)
 		// data->middle_cmd_path = NULL;
 		if (data->middle_cmd_path == NULL)
 		{
+			free_all(data);
 			return (0);
 		}
 		execve(data->middle_cmd_path, data->middle_cmd, data->env);

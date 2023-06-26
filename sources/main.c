@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 14:43:48 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/26 15:24:24 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,15 @@ int	main(int argc, char **argv, char **env)
 	if (!parsing(argc, argv, env, &data))
 		return (error_free(&data), 1);
 	pids = NULL;
-	if (!first_process(&data, &pids) || !middle(&data, &pids)
-		|| !last_process(&data, &pids))
+	// if (!first_process(&data, &pids) || !middle(&data, &pids)
+	// 	|| !last_process(&data, &pids))
+	first_process(&data, &pids);
+	if (!middle(&data, &pids))
 	{
-		// free_all(&data);
-		ft_printf("Error\n");
-		exit(127);
+		free_all(&data);
+		fprintf(stderr, "test\n");
+		// exit(errno);
 	}
+	last_process(&data, &pids);
 	wait_fct(&pids, &data);
 }

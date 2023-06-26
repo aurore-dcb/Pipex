@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:50:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 14:38:45 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/26 15:28:49 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	error_free(t_parsing *data)
 		free(data->first_cmd_path);
 	if (data->last_cmd_path)
 		free(data->last_cmd_path);
-	if (data->middle_cmd)
-		free_tab(data->middle_cmd);
-	if (data->middle_cmd)
-		free(data->middle_cmd);
+	// if (data->middle_cmd)
+	// 	free_tab(data->middle_cmd);
+	// if (data->middle_cmd)
+	// 	free(data->middle_cmd);
 }
 
 void	free_tab(char **tab)

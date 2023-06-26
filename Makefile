@@ -6,7 +6,7 @@
 #    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/15 16:20:20 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/26 14:32:22 by aurore           ###   ########.fr        #
+#    Updated: 2023/06/26 15:20:39 by aurore           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS = sources/main.c \
 OBJS = ${SRCS:sources/%.c=objects/%.o}
 
 CC = cc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 LIBFT_DIR = libft
