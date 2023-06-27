@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 10:42:47 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 15:24:24 by aurore           ###   ########.fr       */
+/*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
+/*   Updated: 2023/06/27 09:13:36 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	initialise(t_parsing *data)
 	data->last_cmd_path = NULL;
 	data->middle_cmd = NULL;
 	data->middle_cmd_path = NULL;
-	data->index = 1;
 }
 
 int	main(int argc, char **argv, char **env)
@@ -37,15 +36,11 @@ int	main(int argc, char **argv, char **env)
 	if (!parsing(argc, argv, env, &data))
 		return (error_free(&data), 1);
 	pids = NULL;
-	// if (!first_process(&data, &pids) || !middle(&data, &pids)
-	// 	|| !last_process(&data, &pids))
-	first_process(&data, &pids);
-	if (!middle(&data, &pids))
+	if (!first_process(&data, &pids) || !middle(&data, &pids)
+		|| !last_process(&data, &pids))
 	{
 		free_all(&data);
-		fprintf(stderr, "test\n");
-		// exit(errno);
+		return (1);
 	}
-	last_process(&data, &pids);
 	wait_fct(&pids, &data);
 }

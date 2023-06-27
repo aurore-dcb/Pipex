@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 14:07:42 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 14:14:04 by aurore           ###   ########.fr       */
+/*   Created: 2023/06/27 09:11:36 by aducobu           #+#    #+#             */
+/*   Updated: 2023/06/27 09:11:41 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	first_process(t_parsing *data, t_pid **pids)
 	return (1);
 }
 
-int	util(t_parsing *data, t_pid **child, pid_t pid_child)
+int	util(t_parsing *data, t_pid **pids, pid_t pid)
 {
-	ft_lstadd_back_pipex(child, ft_lstnew_pipex(pid_child));
+	ft_lstadd_back_pipex(pids, ft_lstnew_pipex(pid));
 	if (dup2(data->fd[0], STDIN_FILENO) == -1 || close(data->fd[1]) == -1
 		|| close(data->fd[0]) == -1)
 		return (0);

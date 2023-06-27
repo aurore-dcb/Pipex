@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
+#    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/15 16:20:20 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/26 15:20:39 by aurore           ###   ########.fr        #
+#    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
+#    Updated: 2023/06/27 09:09:38 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,4 +54,3 @@ fclean: clean
 	make -C libft fclean
 
 re: fclean all
-

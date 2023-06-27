@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 11:28:34 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/26 10:04:54 by aducobu          ###   ########.fr       */
+/*   Created: 2023/06/27 09:10:22 by aducobu           #+#    #+#             */
+/*   Updated: 2023/06/27 09:10:33 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_parsing
 	char			*last_cmd_path;
 	int				infile;
 	int				outfile;
-	int				index;
 	char			**middle_cmd;
 	char			*middle_cmd_path;
 }					t_parsing;

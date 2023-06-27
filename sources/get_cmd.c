@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/20 13:00:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/23 11:23:21 by aducobu          ###   ########.fr       */
+/*   Created: 2023/06/27 09:12:22 by aducobu           #+#    #+#             */
+/*   Updated: 2023/06/27 09:12:29 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ char	**get_args(char *cmd)
 {
 	char	**args;
 
+	if (!cmd)
+		return (NULL);
 	args = ft_split(cmd, ' ');
 	if (!args)
 		return (NULL);
