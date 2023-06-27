@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 09:10:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:44:17 by aducobu          ###   ########.fr       */
+/*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
+/*   Updated: 2023/06/27 09:44:07 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_parsing
 	char			*last_cmd_path;
 	int				infile;
 	int				outfile;
+	char			**middle_cmd;
+	char			*middle_cmd_path;
 }					t_parsing;
 
 typedef struct s_pid
@@ -67,5 +69,9 @@ int					last_process(t_parsing *data, t_pid **pids);
 int					parsing(int argc, char **argv, char **env, t_parsing *data);
 t_pid				*ft_lstnew_pipex(pid_t pid);
 void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
+
+// middle_process.c
+int					middle(t_parsing *data, t_pid **pids);
+int					middle_process(t_parsing *data, t_pid **pids);
 
 #endif

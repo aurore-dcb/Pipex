@@ -6,11 +6,11 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:41:10 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 09:53:21 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 #include "../libft/libft.h"
 
 void	initialise(t_parsing *data)
@@ -20,6 +20,8 @@ void	initialise(t_parsing *data)
 	data->last_cmd = NULL;
 	data->first_cmd_path = NULL;
 	data->last_cmd_path = NULL;
+	data->middle_cmd = NULL;
+	data->middle_cmd_path = NULL;
 }
 
 int	main(int argc, char **argv, char **env)
@@ -34,7 +36,8 @@ int	main(int argc, char **argv, char **env)
 	if (!parsing(argc, argv, env, &data))
 		return (error_free(&data), 1);
 	pids = NULL;
-	if (!first_process(&data, &pids) || !last_process(&data, &pids))
+	if (!first_process(&data, &pids) || !middle(&data, &pids)
+		|| !last_process(&data, &pids))
 	{
 		free_all(&data);
 		return (1);

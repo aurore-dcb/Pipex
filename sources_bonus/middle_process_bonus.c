@@ -6,11 +6,11 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:39 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:37:18 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 09:53:24 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 #include "../libft/libft.h"
 
 int	middle(t_parsing *data, t_pid **pids)

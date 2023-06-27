@@ -6,16 +6,16 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:14:06 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:40:12 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 09:54:29 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 #include "../libft/libft.h"
 
 int	parsing(int argc, char **argv, char **env, t_parsing *data)
 {
-	if (argc != 5)
+	if (argc < 5)
 		return (ft_printf("Error -> Wrong number of arguments\n"), 0);
 	if (!env)
 		return (ft_printf("Error -> No env\n"), 0);

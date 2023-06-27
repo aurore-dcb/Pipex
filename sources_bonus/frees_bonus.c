@@ -6,11 +6,11 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:40:46 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 09:53:08 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex.h"
+#include "../headers/pipex_bonus.h"
 #include "../libft/libft.h"
 
 void	error_free(t_parsing *data)
@@ -25,6 +25,10 @@ void	error_free(t_parsing *data)
 		free(data->first_cmd_path);
 	if (data->last_cmd_path)
 		free(data->last_cmd_path);
+	if (data->middle_cmd)
+		free_tab(data->middle_cmd);
+	if (data->middle_cmd_path)
+		free(data->middle_cmd_path);
 }
 
 void	free_tab(char **tab)
