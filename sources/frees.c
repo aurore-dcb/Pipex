@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:12:05 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 09:35:53 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,4 @@ void	free_all(t_parsing *data)
 		free(data->first_cmd_path);
 	if (data->last_cmd_path)
 		free(data->last_cmd_path);
-	if (data->middle_cmd)
-		free_tab(data->middle_cmd);
-	if (data->middle_cmd_path)
-		free(data->middle_cmd_path);
 }

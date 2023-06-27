@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:10:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:10:33 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 09:23:14 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
 
 // middle_process.c
 int					middle(t_parsing *data, t_pid **pids);
-int					middle_process(t_parsing *data, t_pid **pids, int index);
+int					middle_process(t_parsing *data, t_pid **pids);
 
 #endif
