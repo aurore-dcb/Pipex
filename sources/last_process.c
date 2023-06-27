@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:12:58 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:41:23 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 15:10:25 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	last_process(t_parsing *data, t_pid **pids)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (dup2(data->outfile, STDOUT_FILENO) == -1 || close(data->fd[0]) == -1
+		if (dup2(data->outfile, STDOUT_FILENO) == -1 || 
+			close(data->fd[0]) == -1
 			|| close(data->fd[1]) == -1)
 			return (0);
 		execve(data->last_cmd_path, data->last_cmd, data->env);
