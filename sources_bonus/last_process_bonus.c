@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_process.c                                     :+:      :+:    :+:   */
+/*   last_process_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:12:58 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:53:18 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 14:43:56 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	last_process(t_parsing *data, t_pid **pids)
 	pid_t	pid;
 
 	if (pipe(data->fd) == -1)
-		return (ft_printf("Error pipe\n"), 0);
+		return (ft_printf("Error -> Pipe\n"), 0);
 	pid = fork();
 	if (pid == 0)
 	{
