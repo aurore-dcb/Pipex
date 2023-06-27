@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_paths.c                                        :+:      :+:    :+:   */
+/*   get_paths_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:12:33 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:53:16 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 14:20:11 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,13 @@ char	*find_path(char **paths, char *cmd)
 	char	*slash;
 	char	*all_path;
 
-	i = 0;
-	while (paths[i])
+	i = -1;
+	if (!cmd)
+		return (NULL);
+	while (paths[++i])
 	{
+		if (access(cmd, F_OK | R_OK | X_OK) == 0)
+			return (ft_substr(cmd, 0, ft_strlen(cmd)));
 		slash = ft_strjoin(paths[i], "/");
 		if (!slash)
 			return (NULL);
@@ -71,21 +75,7 @@ char	*find_path(char **paths, char *cmd)
 			return (NULL);
 		if (access(all_path, F_OK | R_OK | X_OK) == 0)
 			return (all_path);
-		i++;
 		free(all_path);
 	}
 	return (NULL);
-}
-
-void	display_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("PATH=\n");
-	while (tab[i])
-	{
-		ft_printf("%s\n", tab[i]);
-		i++;
-	}
 }

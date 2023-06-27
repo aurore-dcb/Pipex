@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frees.c                                            :+:      :+:    :+:   */
+/*   frees_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:53:08 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/27 11:06:31 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ void	free_tab(char **tab)
 void	wait_fct(t_pid **pids, t_parsing *data)
 {
 	t_pid	*tmp;
-	int		i;
 
-	i = 0;
 	close(data->fd[0]);
 	close(data->fd[1]);
 	while (*pids)
@@ -58,7 +56,6 @@ void	wait_fct(t_pid **pids, t_parsing *data)
 		waitpid(((*pids)->pid), NULL, 0);
 		*pids = (*pids)->next;
 		free(tmp);
-		i++;
 	}
 	free(*pids);
 	free_all(data);
