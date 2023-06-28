@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 10:55:59 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 11:25:50 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ typedef struct s_parsing
 	char			**env;
 	char			**paths;
 	int				fd[2];
-	char			**first_cmd;
-	char			*first_cmd_path;
-	char			**last_cmd;
-	char			*last_cmd_path;
 	int				infile;
 	int				outfile;
 	char			**middle_cmd;
@@ -65,21 +61,10 @@ void				ft_lstclear_cmd(t_cmd **lst);
 char				*get_cmd(char *s);
 char				**get_args(char *cmd);
 
-// process_child_bonus.c
-int					util(t_parsing *data, t_pid **child, pid_t pid_child);
-int					first_process(t_parsing *data, t_pid **pids);
-
-// process_parent_bonus.c
-int					last_process(t_parsing *data, t_pid **pids);
-
 // parsing_bonus.c
 int					parsing(int argc, char **argv, char **env, t_parsing *data);
 t_pid				*ft_lstnew_pipex(pid_t pid);
 void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
-
-// middle_process_bonus.c
-int					middle(t_parsing *data, t_pid **pids);
-int					middle_process(t_parsing *data, t_pid **pids);
 
 // lst_cmd_bonus.c
 t_cmd				*ft_lstnew_cmd(char *arg);
@@ -91,4 +76,5 @@ int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
 int					ft_child(t_cmd *cmd, t_parsing *data);
 int					ft_exec(t_parsing *data);
+
 #endif

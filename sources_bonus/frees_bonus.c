@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:20:08 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 11:26:11 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ void	error_free(t_parsing *data, t_cmd **cmd)
 {
 	if (data->paths)
 		free_tab(data->paths);
-	if (data->first_cmd)
-		free_tab(data->first_cmd);
-	if (data->last_cmd)
-		free_tab(data->last_cmd);
-	if (data->first_cmd_path)
-		free(data->first_cmd_path);
-	if (data->last_cmd_path)
-		free(data->last_cmd_path);
 	if (data->middle_cmd)
 		free_tab(data->middle_cmd);
 	if (data->middle_cmd_path)
@@ -69,14 +61,6 @@ void	free_all(t_parsing *data, t_cmd **cmd)
 	close(data->outfile);
 	if (data->paths)
 		free_tab(data->paths);
-	if (data->first_cmd)
-		free_tab(data->first_cmd);
-	if (data->last_cmd)
-		free_tab(data->last_cmd);
-	if (data->first_cmd_path)
-		free(data->first_cmd_path);
-	if (data->last_cmd_path)
-		free(data->last_cmd_path);
 	ft_lstclear_cmd(cmd);
 }
 

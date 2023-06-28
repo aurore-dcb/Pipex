@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:02:09 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 11:26:35 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@
 void	initialise(t_parsing *data)
 {
 	data->paths = NULL;
-	data->first_cmd = NULL;
-	data->last_cmd = NULL;
-	data->first_cmd_path = NULL;
-	data->last_cmd_path = NULL;
 	data->middle_cmd = NULL;
 	data->middle_cmd_path = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:14:06 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 14:43:21 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/28 11:25:25 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 	data->paths = get_paths(env);
 	if (!data->paths)
 		return (ft_printf("Error -> Paths\n"), 0);
-	data->first_cmd = get_args(argv[2]);
-	data->last_cmd = get_args(argv[argc - 2]);
-	if (!data->first_cmd || !data->last_cmd)
-		return (ft_printf("Error -> Command\n"), 0);
-	data->first_cmd_path = find_path(data->paths, data->first_cmd[0]);
-	data->last_cmd_path = find_path(data->paths, data->last_cmd[0]);
-	if (!data->first_cmd_path || !data->last_cmd_path)
-		return (ft_printf("Error -> Command\n"), 0);
 	data->infile = open(argv[1], O_RDONLY);
 	if (data->infile == -1)
 		return (ft_printf("Error -> Can't create/open file\n"), 0);
