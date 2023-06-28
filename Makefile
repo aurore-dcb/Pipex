@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
+#    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/28 11:38:20 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/28 17:40:15 by aurore           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,9 @@ SRCS = 			sources/main.c \
 				sources/get_paths.c \
 				sources/frees.c \
 				sources/get_cmd.c \
-				sources/process.c \
-				sources/first_process.c \
-				sources/last_process.c \
-				sources/utils.c
+				sources/utils.c \
+				sources/lst_cmd.c \
+				sources/process.c
 
 SRCS_bonus = 	sources_bonus/main_bonus.c \
 				sources_bonus/get_paths_bonus.c \

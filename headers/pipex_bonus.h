@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:25:50 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 17:27:00 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_cmd				*ft_lstnew_cmd(char *arg);
 int					ft_lstadd_back_cmd(t_cmd **lst, t_cmd *new);
 int					create_list_cmd(t_cmd **cmd, int argc, char **argv);
 
-// process.c
+// process_bonus.c
 int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
 int					ft_child(t_cmd *cmd, t_parsing *data);

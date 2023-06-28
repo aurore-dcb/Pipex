@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:10:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 09:44:17 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 17:42:53 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,22 @@ typedef struct s_parsing
 	char			**env;
 	char			**paths;
 	int				fd[2];
-	char			**first_cmd;
-	char			*first_cmd_path;
-	char			**last_cmd;
-	char			*last_cmd_path;
+	// char			**first_cmd;
+	// char			*first_cmd_path;
+	// char			**last_cmd;
+	// char			*last_cmd_path;
 	int				infile;
 	int				outfile;
+	char			**middle_cmd;
+	char			*middle_cmd_path;
 }					t_parsing;
+
+typedef struct s_cmd
+{
+	int				in;
+	char			*arg;
+	struct s_cmd	*next;
+}					t_cmd;
 
 typedef struct s_pid
 {
@@ -43,29 +52,40 @@ typedef struct s_pid
 // get_path.c
 char				*ft_trim(char *s);
 char				**get_paths(char **env);
-void				display_tab(char **tab);
 char				*find_path(char **paths, char *cmd);
 
 // frees.c
-void				error_free(t_parsing *data);
+void				error_free(t_parsing *data, t_cmd **cmd);
 void				free_tab(char **tab);
-void				wait_fct(t_pid **pids, t_parsing *data);
-void					free_all(t_parsing *data);
+void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
+void				free_all(t_parsing *data, t_cmd **cmd);
+void				ft_lstclear_cmd(t_cmd **lst);
 
 // get_cmd.c
 char				*get_cmd(char *s);
 char				**get_args(char *cmd);
 
 // process_child.c
-int					util(t_parsing *data, t_pid **child, pid_t pid_child);
-int					first_process(t_parsing *data, t_pid **pids);
+// int					util(t_parsing *data, t_pid **child, pid_t pid_child);
+// int					first_process(t_parsing *data, t_pid **pids);
 
 // process_parent.c
-int					last_process(t_parsing *data, t_pid **pids);
+// int					last_process(t_parsing *data, t_pid **pids);
 
 // parsing.c
 int					parsing(int argc, char **argv, char **env, t_parsing *data);
 t_pid				*ft_lstnew_pipex(pid_t pid);
 void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
+
+// lst_cmd.c
+t_cmd				*ft_lstnew_cmd(char *arg);
+int					ft_lstadd_back_cmd(t_cmd **lst, t_cmd *new);
+int					create_list_cmd(t_cmd **cmd, int argc, char **argv);
+
+// process.c
+int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
+int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
+int					ft_child(t_cmd *cmd, t_parsing *data);
+int					ft_exec(t_parsing *data);
 
 #endif

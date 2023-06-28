@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:26:35 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 17:34:49 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv, char **env)
 	data.argc = argc;
 	data.argv = argv;
 	data.env = env;
+	pids = NULL;
 	cmd = NULL;
 	initialise(&data);
 	if (!parsing(argc, argv, env, &data))
@@ -36,7 +37,6 @@ int	main(int argc, char **argv, char **env)
 	if (!create_list_cmd(&cmd, argc, argv))
 		return (error_free(&data, &cmd), 1);
 	cmd->in = data.infile;
-	pids = NULL;
 	if (!loop_process(&data, &pids, &cmd))
 	{
 		free_all(&data, &cmd);
