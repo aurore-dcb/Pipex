@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:19:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 10:17:52 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 10:54:42 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ t_cmd	*ft_lstnew_cmd(char *arg)
 		return (NULL);
 	elem->next = NULL;
 	elem->in = -2;
-	elem->arg = malloc(sizeof(char) * (ft_strlen(arg) + 1));
-	if (!elem->arg)
-		return (NULL);
 	elem->arg = ft_strdup(arg);
 	if (!elem->arg)
 		return (NULL);

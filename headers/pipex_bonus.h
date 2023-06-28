@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 10:46:59 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 10:55:59 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ int					create_list_cmd(t_cmd **cmd, int argc, char **argv);
 // process.c
 int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
-int					ft_child(t_cmd *cmd, t_pid **pids, t_parsing *data);
+int					ft_child(t_cmd *cmd, t_parsing *data);
 int					ft_exec(t_parsing *data);
 #endif
