@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 14:43:08 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/28 10:41:45 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,29 @@ int	main(int argc, char **argv, char **env)
 {
 	t_parsing	data;
 	t_pid		*pids;
+	t_cmd		*cmd;
 
 	data.argc = argc;
 	data.argv = argv;
 	data.env = env;
+	cmd = NULL;
 	initialise(&data);
 	if (!parsing(argc, argv, env, &data))
-		return (error_free(&data), 1);
+		return (error_free(&data, &cmd), 1);
+	if (!create_list_cmd(&cmd, argc, argv))
+		return (ft_printf("Error -> list commande\n"), error_free(&data, &cmd), 1);
+	cmd->in = data.infile;
 	pids = NULL;
-	if (!first_process(&data, &pids) || !middle(&data, &pids)
-		|| !last_process(&data, &pids))
+	if (!loop_process(&data, &pids, &cmd))
 	{
-		free_all(&data);
+		free_all(&data, &cmd);
 		return (1);
 	}
-	wait_fct(&pids, &data);
+	// if (!first_process(&data, &pids) || !middle(&data, &pids)
+	// 	|| !last_process(&data, &pids))
+	// {
+	// 	free_all(&data, &cmd);
+	// 	return (1);
+	// }
+	wait_fct(&pids, &data, &cmd);
 }

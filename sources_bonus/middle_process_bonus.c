@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   middle_process_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:39 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/27 14:43:14 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/28 07:51:34 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	middle_process(t_parsing *data, t_pid **pids)
 	pid_t	pid;
 
 	if (pipe(data->fd) == -1)
-		return (ft_printf("Error pipe\n"), 0);
+		return (ft_printf("Error -> Pipe\n"), 0);
 	pid = fork();
 	if (pid == 0)
 	{
