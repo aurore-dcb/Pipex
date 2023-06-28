@@ -6,7 +6,7 @@
 #    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/28 11:24:31 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/28 11:38:20 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS = 			sources/main.c \
 				sources/get_paths.c \
 				sources/frees.c \
 				sources/get_cmd.c \
+				sources/process.c \
 				sources/first_process.c \
 				sources/last_process.c \
 				sources/utils.c
