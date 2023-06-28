@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:19:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 10:54:42 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 11:02:12 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int create_list_cmd(t_cmd **cmd, int argc, char **argv)
 	while (i < argc - 1)
 	{
 		if (!ft_lstadd_back_cmd(cmd, ft_lstnew_cmd(argv[i])))
-			return (0);
+			return (ft_printf("Error -> list commande\n"), 0);
 		i++;
 	}
 	return (1);
