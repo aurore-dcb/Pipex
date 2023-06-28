@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:51:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:20:20 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 18:03:05 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,6 @@ int	ft_child(t_cmd *cmd, t_parsing *data)
 		dup2(data->outfile, STDOUT_FILENO);
 		close(data->outfile);
 	}
-	if (!ft_exec(data))
-		return (0);
-	return (1);
-}
-
-int	ft_exec(t_parsing *data)
-{
 	if (execve(data->middle_cmd_path, data->middle_cmd, data->env) == -1)
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 17:27:00 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/28 18:03:46 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ int					create_list_cmd(t_cmd **cmd, int argc, char **argv);
 int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
 int					ft_child(t_cmd *cmd, t_parsing *data);
-int					ft_exec(t_parsing *data);
 
 #endif
