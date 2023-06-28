@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 10:42:13 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 11:20:08 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	free_all(t_parsing *data, t_cmd **cmd)
 		free(data->last_cmd_path);
 	ft_lstclear_cmd(cmd);
 }
+
 void	ft_lstclear_cmd(t_cmd **lst)
 {
 	t_cmd	*temp;

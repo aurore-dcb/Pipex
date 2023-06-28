@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:19:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:02:12 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/28 11:20:30 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	ft_lstadd_back_cmd(t_cmd **lst, t_cmd *new)
 	return (1);
 }
 
-int create_list_cmd(t_cmd **cmd, int argc, char **argv)
+int	create_list_cmd(t_cmd **cmd, int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 2;
 	while (i < argc - 1)

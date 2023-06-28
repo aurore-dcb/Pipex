@@ -6,7 +6,7 @@
 #    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/28 09:57:48 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/28 11:11:04 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS_bonus = 	sources_bonus/main_bonus.c \
 				sources_bonus/utils_bonus.c \
 				sources_bonus/middle_process_bonus.c \
 				sources_bonus/lst_cmd_bonus.c \
-				sources_bonus/process.c
+				sources_bonus/process_bonus.c
 
 OBJS = 			${SRCS:sources/%.c=objects/%.o}
 
