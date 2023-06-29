@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:14:06 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:25:25 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/29 14:05:26 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	ft_lstadd_back_pipex(t_pid **lst, t_pid *new)
 	t_pid	*list;
 
 	list = *lst;
+	if (!new)
+		return ;
 	if (list && new)
 	{
 		while (list->next)

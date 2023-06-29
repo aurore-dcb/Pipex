@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 10:07:58 by aurore            #+#    #+#             */
-/*   Updated: 2023/06/29 10:11:53 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 14:59:34 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 char	*ft_strstr(char *str, char *to_find)
 {
-	int	i;
-	int j;
-	char *x;
+	int		i;
+	int		j;
+	char	*x;
+
 	if (!str || to_find[0] == '\0')
 		return (str);
 	i = 0;
 	while (str[i])
 	{
-		if(str[i] == to_find[0])
+		if (str[i] == to_find[0])
 		{
 			x = &str[i];
 			j = 0;
-			while (str[i] == to_find[j] 
-				&& to_find[j] != '\0' 
-				&& str[i] != '\0')
+			while (str[i] == to_find[j] && to_find[j] != '\0' && str[i] != '\0')
 			{
 				j++;
 				i++;
