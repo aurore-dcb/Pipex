@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 12:17:29 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 12:38:46 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,6 @@ typedef struct s_cmd
 	char			*arg;
 	struct s_cmd	*next;
 }					t_cmd;
-
-// typedef struct s_doc
-// {
-// 	char			**middle_cmd;
-// 	char			*middle_cmd_path;
-// 	char			**paths;
-// 	int				fd;
-// 	int				outfile;
-// }					t_doc;
 
 typedef struct s_pid
 {

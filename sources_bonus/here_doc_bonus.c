@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 09:35:29 by aurore            #+#    #+#             */
-/*   Updated: 2023/06/29 12:27:16 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 12:37:54 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 int is_here_doc(int argc, char **argv)
 {
-    if (argc < 7)
+    if (argc < 6)
         return (0);
     if (ft_strcmp("here_doc", argv[1]) != 0)
-        return (ft_printf("strcmp\n"), 0);
+        return (0);
     return (1);
 }
 
@@ -48,20 +48,20 @@ int ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd)
     
     initialise_data(&data);
     if (!parsing_here_doc(&data, argv, argc, env))
-        return (error_free(&data, cmd), ft_printf("-> Here_doc\n"), 1); //  1 == erreur
+        return (error_free(&data, cmd), ft_printf("-> Here_doc\n"), 1);
     standart_input(argv, &data);
     close(data.here_doc_file);
     if (!create_list_cmd(cmd, argc, argv, 3))
-		return (error_free(&data, cmd), 1); //  1 == erreur
-    ft_printf("(*cmd)->arg = %s\n", (*cmd)->arg);
+		return (error_free(&data, cmd), 1);
     data.here_doc_file = open(".here_doc", O_RDONLY);
     if (data.here_doc_file == -1)
-        return (error_free(&data, cmd), ft_printf("Error -> Here_doc\n"), 1); //  1 == erreur
+        return (error_free(&data, cmd), ft_printf("Error -> Here_doc\n"), 1);
     (*cmd)->in = data.here_doc_file;
     if (!loop_process(&data, &pids, cmd))
-		return (free_all(&data, cmd), 1); //  1 == erreur
+		return (free_all(&data, cmd), 1);
 	wait_fct(&pids, &data, cmd);
     close(data.here_doc_file);
+    unlink(".here_doc");
     return (0);
 }
 
@@ -78,10 +78,9 @@ void standart_input(char **argv, t_parsing *data)
         if (lign)
         {
             inter = ft_substr(lign, 0, ft_strlen(lign) - 1);
-            ft_printf("lign = %s.\n", inter);
             if (ft_strcmp(inter, argv[2]) != 0)
                 ft_putstr_fd(lign, data->here_doc_file);
-            else // LIMITEUR trouvé
+            else
                 break;
             free(lign);
             free(inter);
