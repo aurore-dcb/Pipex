@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 11:26:11 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/29 14:57:26 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void	wait_fct(t_pid **pids, t_parsing *data, t_cmd **cmd)
 
 void	free_all(t_parsing *data, t_cmd **cmd)
 {
-	close(data->infile);
-	close(data->outfile);
+	if (data->infile > 1)
+		close(data->infile);
+	if (data->outfile > 1)
+		close(data->outfile);
 	if (data->paths)
 		free_tab(data->paths);
 	ft_lstclear_cmd(cmd);

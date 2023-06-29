@@ -3,18 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 12:17:35 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 15:01:31 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex_bonus.h"
 #include "../libft/libft.h"
 
-void	initialise_data(t_parsing *data)
+void	initialise_data(t_parsing *data, int argc, char **argv, char **env)
 {
+	data->argc = argc;
+	data->argv = argv;
+	data->env = env;
+	data->infile = -1;
 	data->paths = NULL;
 	data->middle_cmd = NULL;
 	data->middle_cmd_path = NULL;
@@ -32,10 +36,7 @@ int	main(int argc, char **argv, char **env)
 		return (ft_here_doc(argv, argc, env, &cmd));
 	else
 	{
-		data.argc = argc;
-		data.argv = argv;
-		data.env = env;
-		initialise_data(&data);
+		initialise_data(&data, argc, argv, env);
 		if (!parsing(argc, argv, env, &data))
 			return (error_free(&data, &cmd), 1);
 		if (!create_list_cmd(&cmd, argc, argv, 2))
