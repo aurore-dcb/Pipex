@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 12:00:50 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 13:22:21 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	error_free(t_parsing *data, t_cmd **cmd)
 		free(data->middle_cmd_path);
 	if (cmd)
 		ft_lstclear_cmd(cmd);
+	if (access(".here_doc", F_OK) == 0)
+		unlink(".here_doc");
 }
 
 void	free_tab(char **tab)
@@ -62,6 +64,8 @@ void	free_all(t_parsing *data, t_cmd **cmd)
 	if (data->paths)
 		free_tab(data->paths);
 	ft_lstclear_cmd(cmd);
+	if (access(".here_doc", F_OK) == 0)
+		unlink(".here_doc");
 }
 
 void	ft_lstclear_cmd(t_cmd **lst)
@@ -70,6 +74,7 @@ void	ft_lstclear_cmd(t_cmd **lst)
 
 	if (!lst)
 		return ;
+	temp = NULL;
 	while (*lst)
 	{
 		temp = *lst;
@@ -77,5 +82,4 @@ void	ft_lstclear_cmd(t_cmd **lst)
 		free(temp->arg);
 		free(temp);
 	}
-	temp = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 09:35:29 by aurore            #+#    #+#             */
-/*   Updated: 2023/06/29 12:37:54 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 13:30:43 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int parsing_here_doc(t_parsing *data, char **argv, int argc, char **env)
     data->here_doc_file = open(".here_doc", O_WRONLY | O_CREAT | O_TRUNC, 0646);
     if (data->here_doc_file == -1)
         return (ft_printf("Error -> Can't create/open file\n"), 0);
-    data->outfile = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0646);
+    data->outfile = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0646);
     if (data->outfile == -1)
     {
         close(data->here_doc_file);

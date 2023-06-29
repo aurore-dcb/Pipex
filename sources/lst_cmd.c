@@ -6,11 +6,11 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:19:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 12:25:35 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 13:04:20 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex_bonus.h"
+#include "../headers/pipex.h"
 #include "../libft/libft.h"
 
 t_cmd	*ft_lstnew_cmd(char *arg)

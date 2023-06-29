@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:14:06 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 18:06:18 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 13:21:21 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 	if (data->outfile == -1)
 	{
 		close(data->infile);
-		return (ft_printf("Error -> Can't create/open file\n"), 0);
+		ft_printf("Error -> Can't create/open file\n");
+		return (0);
 	}
 	return (1);
 }

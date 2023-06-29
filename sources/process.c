@@ -6,11 +6,11 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:51:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 12:16:49 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 13:05:13 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/pipex_bonus.h"
+#include "../headers/pipex.h"
 #include "../libft/libft.h"
 
 int	loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd)
