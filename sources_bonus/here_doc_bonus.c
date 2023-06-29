@@ -1,0 +1,90 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   here_doc_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/29 09:35:29 by aurore            #+#    #+#             */
+/*   Updated: 2023/06/29 12:27:16 by aurore           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../headers/pipex_bonus.h"
+#include "../libft/libft.h"
+
+int is_here_doc(int argc, char **argv)
+{
+    if (argc < 7)
+        return (0);
+    if (ft_strcmp("here_doc", argv[1]) != 0)
+        return (ft_printf("strcmp\n"), 0);
+    return (1);
+}
+
+int parsing_here_doc(t_parsing *data, char **argv, int argc, char **env)
+{
+    if (!env)
+		return (ft_printf("Error -> No env\n"), 0);
+	data->paths = get_paths(env);
+	if (!data->paths)
+		return (ft_printf("Error -> Paths\n"), 0);
+    data->here_doc_file = open(".here_doc", O_WRONLY | O_CREAT | O_TRUNC, 0646);
+    if (data->here_doc_file == -1)
+        return (ft_printf("Error -> Can't create/open file\n"), 0);
+    data->outfile = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0646);
+    if (data->outfile == -1)
+    {
+        close(data->here_doc_file);
+        return (ft_printf("Error -> Can't create/open file\n"), 0);
+    }
+    return (1);
+}
+
+int ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd)
+{
+    t_parsing	data;
+    t_pid	*pids;
+    
+    initialise_data(&data);
+    if (!parsing_here_doc(&data, argv, argc, env))
+        return (error_free(&data, cmd), ft_printf("-> Here_doc\n"), 1); //  1 == erreur
+    standart_input(argv, &data);
+    close(data.here_doc_file);
+    if (!create_list_cmd(cmd, argc, argv, 3))
+		return (error_free(&data, cmd), 1); //  1 == erreur
+    ft_printf("(*cmd)->arg = %s\n", (*cmd)->arg);
+    data.here_doc_file = open(".here_doc", O_RDONLY);
+    if (data.here_doc_file == -1)
+        return (error_free(&data, cmd), ft_printf("Error -> Here_doc\n"), 1); //  1 == erreur
+    (*cmd)->in = data.here_doc_file;
+    if (!loop_process(&data, &pids, cmd))
+		return (free_all(&data, cmd), 1); //  1 == erreur
+	wait_fct(&pids, &data, cmd);
+    close(data.here_doc_file);
+    return (0);
+}
+
+void standart_input(char **argv, t_parsing *data)
+{
+    char *lign;
+    char *inter;
+
+    lign = "ok";
+    while (lign)
+    {
+        ft_putstr_fd("here_doc>", 1);
+        lign = get_next_line(1);
+        if (lign)
+        {
+            inter = ft_substr(lign, 0, ft_strlen(lign) - 1);
+            ft_printf("lign = %s.\n", inter);
+            if (ft_strcmp(inter, argv[2]) != 0)
+                ft_putstr_fd(lign, data->here_doc_file);
+            else // LIMITEUR trouvé
+                break;
+            free(lign);
+            free(inter);
+        }
+    }
+}

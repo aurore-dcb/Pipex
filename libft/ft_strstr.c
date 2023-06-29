@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 11:39:29 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 10:19:24 by aurore           ###   ########.fr       */
+/*   Created: 2023/06/29 10:07:58 by aurore            #+#    #+#             */
+/*   Updated: 2023/06/29 10:11:53 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
-
+	int j;
+	char *x;
+	if (!str || to_find[0] == '\0')
+		return (str);
 	i = 0;
-	while (i < n && (s1[i] || s2[i]))
+	while (str[i])
 	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		if(str[i] == to_find[0])
+		{
+			x = &str[i];
+			j = 0;
+			while (str[i] == to_find[j] 
+				&& to_find[j] != '\0' 
+				&& str[i] != '\0')
+			{
+				j++;
+				i++;
+			}
+			if (j == ft_strlen(to_find))
+				return (x);
+		}
 		i++;
 	}
 	return (0);

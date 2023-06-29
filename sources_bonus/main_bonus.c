@@ -6,14 +6,14 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 17:34:49 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 12:17:35 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex_bonus.h"
 #include "../libft/libft.h"
 
-void	initialise(t_parsing *data)
+void	initialise_data(t_parsing *data)
 {
 	data->paths = NULL;
 	data->middle_cmd = NULL;
@@ -26,21 +26,23 @@ int	main(int argc, char **argv, char **env)
 	t_pid		*pids;
 	t_cmd		*cmd;
 
-	data.argc = argc;
-	data.argv = argv;
-	data.env = env;
 	pids = NULL;
 	cmd = NULL;
-	initialise(&data);
-	if (!parsing(argc, argv, env, &data))
-		return (error_free(&data, &cmd), 1);
-	if (!create_list_cmd(&cmd, argc, argv))
-		return (error_free(&data, &cmd), 1);
-	cmd->in = data.infile;
-	if (!loop_process(&data, &pids, &cmd))
+	if (is_here_doc(argc, argv))
+		return (ft_here_doc(argv, argc, env, &cmd));
+	else
 	{
-		free_all(&data, &cmd);
-		return (1);
+		data.argc = argc;
+		data.argv = argv;
+		data.env = env;
+		initialise_data(&data);
+		if (!parsing(argc, argv, env, &data))
+			return (error_free(&data, &cmd), 1);
+		if (!create_list_cmd(&cmd, argc, argv, 2))
+			return (error_free(&data, &cmd), 1);
+		cmd->in = data.infile;
+		if (!loop_process(&data, &pids, &cmd))
+			return (free_all(&data, &cmd), 1);
+		wait_fct(&pids, &data, &cmd);
 	}
-	wait_fct(&pids, &data, &cmd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:46:29 by aducobu           #+#    #+#             */
-/*   Updated: 2023/05/29 12:13:55 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/29 10:19:44 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int					ft_tolower(int c);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 int					ft_strncmp(const char *s1, const char *s2, int n);
+int					ft_strcmp(const char *s1, const char *s2);
 void				*ft_memchr(const void *s, int c, int n);
 int					ft_memcmp(const void *s1, const void *s2, int n);
 char				*ft_strnstr(const char *haystack, const char *needle,
@@ -76,6 +77,7 @@ int					ft_print_nbr(int nb);
 int					size_nb_hexa(unsigned int nb);
 void				ft_print_hexa(unsigned int nb, char c);
 int					convert_hexa(unsigned int nb, char c);
+char				*ft_strstr(char *str, char *to_find);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

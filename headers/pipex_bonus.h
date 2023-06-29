@@ -6,7 +6,7 @@
 /*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 18:03:46 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 12:17:29 by aurore           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_parsing
 	int				fd[2];
 	int				infile;
 	int				outfile;
+	int				here_doc_file;
 	char			**middle_cmd;
 	char			*middle_cmd_path;
 }					t_parsing;
@@ -39,11 +40,22 @@ typedef struct s_cmd
 	struct s_cmd	*next;
 }					t_cmd;
 
+// typedef struct s_doc
+// {
+// 	char			**middle_cmd;
+// 	char			*middle_cmd_path;
+// 	char			**paths;
+// 	int				fd;
+// 	int				outfile;
+// }					t_doc;
+
 typedef struct s_pid
 {
 	pid_t			pid;
 	struct s_pid	*next;
 }					t_pid;
+
+void				initialise_data(t_parsing *data);
 
 // get_path_bonus.c
 char				*ft_trim(char *s);
@@ -69,11 +81,17 @@ void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
 // lst_cmd_bonus.c
 t_cmd				*ft_lstnew_cmd(char *arg);
 int					ft_lstadd_back_cmd(t_cmd **lst, t_cmd *new);
-int					create_list_cmd(t_cmd **cmd, int argc, char **argv);
+int	create_list_cmd(t_cmd **cmd, int argc, char **argv, int i);
 
 // process_bonus.c
 int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
 int					ft_child(t_cmd *cmd, t_parsing *data);
+
+// here_doc_bonus.c
+int					is_here_doc(int argc, char **argv);
+int					parsing_here_doc(t_parsing *data, char **argv, int argc, char **env);
+int					ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd);
+void				standart_input(char **argv, t_parsing *data);
 
 #endif

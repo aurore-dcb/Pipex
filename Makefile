@@ -6,7 +6,7 @@
 #    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/28 17:40:15 by aurore           ###   ########.fr        #
+#    Updated: 2023/06/29 11:50:04 by aurore           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS_bonus = 	sources_bonus/main_bonus.c \
 				sources_bonus/get_cmd_bonus.c \
 				sources_bonus/utils_bonus.c \
 				sources_bonus/lst_cmd_bonus.c \
-				sources_bonus/process_bonus.c
+				sources_bonus/process_bonus.c \
+				sources_bonus/here_doc_bonus.c
 
 OBJS = 			${SRCS:sources/%.c=objects/%.o}
 
