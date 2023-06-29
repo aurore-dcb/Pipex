@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:51:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 13:05:13 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/29 15:12:02 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd)
 		}
 		data->middle_cmd_path = find_path(data->paths, data->middle_cmd[0]);
 		if (!data->middle_cmd_path)
-			return (0);
+			return (ft_printf("Error -> Command\n"), 0);
 		if (!ft_process(data, pids, tmp))
-			return (0);
+			return (ft_printf("Error -> Process\n"), 0);
 		free_tab(data->middle_cmd);
 		free(data->middle_cmd_path);
 		tmp = tmp->next;
