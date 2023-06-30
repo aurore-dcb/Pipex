@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:51:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 15:12:15 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 14:15:32 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int	loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd)
 		if (data->middle_cmd == NULL)
 		{
 			ft_printf("Error -> Command\n");
+			error_free(data, cmd, pids);
 			return (0);
 		}
 		data->middle_cmd_path = find_path(data->paths, data->middle_cmd[0]);
 		if (!data->middle_cmd_path)
-			return (ft_printf("Error -> Command\n"), 0);
+			return (error_free(data, cmd, pids), ft_printf("---Error -> Command\n"), 0);
 		if (!ft_process(data, pids, tmp))
-			return (ft_printf("Error -> Process\n"), 0);
+			return (error_free(data, cmd, pids), ft_printf("Error -> Process\n"), 0);
 		free_tab(data->middle_cmd);
 		free(data->middle_cmd_path);
 		tmp = tmp->next;
@@ -86,6 +87,6 @@ int	ft_child(t_cmd *cmd, t_parsing *data)
 		close(data->outfile);
 	}
 	if (execve(data->middle_cmd_path, data->middle_cmd, data->env) == -1)
-		return (0);
+		return (close(data->fd[0]), close(data->fd[1]), 0);
 	return (1);
 }

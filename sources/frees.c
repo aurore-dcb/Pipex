@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 13:22:21 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/30 11:25:21 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,28 @@ void	wait_fct(t_pid **pids, t_parsing *data, t_cmd **cmd)
 
 void	free_all(t_parsing *data, t_cmd **cmd)
 {
-	close(data->infile);
-	close(data->outfile);
+	if (data->infile > 1)
+		close(data->infile);
+	if (data->outfile > 1)
+		close(data->outfile);
 	if (data->paths)
 		free_tab(data->paths);
-	ft_lstclear_cmd(cmd);
-	if (access(".here_doc", F_OK) == 0)
-		unlink(".here_doc");
+	if (data->middle_cmd)
+		free_tab(data->middle_cmd);
+	if (data->middle_cmd_path)
+		free(data->middle_cmd_path);
+	if (cmd)
+		ft_lstclear_cmd(cmd);
 }
+
+// void	free_all(t_parsing *data, t_cmd **cmd)
+// {
+// 	close(data->infile);
+// 	close(data->outfile);
+// 	if (data->paths)
+// 		free_tab(data->paths);
+// 	ft_lstclear_cmd(cmd);
+// }
 
 void	ft_lstclear_cmd(t_cmd **lst)
 {

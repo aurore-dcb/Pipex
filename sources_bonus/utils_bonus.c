@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:14:06 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 14:05:26 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 14:41:53 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_pid	*ft_lstnew_pipex(pid_t pid)
 {
 	t_pid	*elem;
 
-	elem = malloc(sizeof(t_list));
+	elem = malloc(sizeof(t_pid));
 	if (!elem)
 		return (NULL);
 	elem->next = NULL;
@@ -46,13 +46,13 @@ t_pid	*ft_lstnew_pipex(pid_t pid)
 	return (elem);
 }
 
-void	ft_lstadd_back_pipex(t_pid **lst, t_pid *new)
+int	ft_lstadd_back_pipex(t_pid **lst, t_pid *new)
 {
 	t_pid	*list;
 
 	list = *lst;
 	if (!new)
-		return ;
+		return (0);
 	if (list && new)
 	{
 		while (list->next)
@@ -61,4 +61,5 @@ void	ft_lstadd_back_pipex(t_pid **lst, t_pid *new)
 	}
 	else
 		*lst = new;
+	return (1);
 }

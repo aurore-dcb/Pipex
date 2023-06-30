@@ -6,7 +6,7 @@
 #    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/30 11:09:50 by aducobu          ###   ########.fr        #
+#    Updated: 2023/06/30 13:21:46 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJS = 			${SRCS:sources/%.c=objects/%.o}
 OBJS_bonus = 	${SRCS_bonus:sources_bonus/%.c=objects_bonus/%.o}
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -rf
 
 LIBFT_DIR = libft

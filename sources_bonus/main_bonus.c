@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 15:01:31 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 14:15:46 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	initialise_data(t_parsing *data, int argc, char **argv, char **env)
 	data->argc = argc;
 	data->argv = argv;
 	data->env = env;
-	data->infile = -1;
 	data->paths = NULL;
+	data->infile = -1;
+	data->outfile = -1;
+	data->here_doc_file = -1;
 	data->middle_cmd = NULL;
 	data->middle_cmd_path = NULL;
 }
@@ -38,12 +40,12 @@ int	main(int argc, char **argv, char **env)
 	{
 		initialise_data(&data, argc, argv, env);
 		if (!parsing(argc, argv, env, &data))
-			return (error_free(&data, &cmd), 1);
+			return (error_free(&data, &cmd, &pids), 1);
 		if (!create_list_cmd(&cmd, argc, argv, 2))
-			return (error_free(&data, &cmd), 1);
+			return (error_free(&data, &cmd, &pids), 1);
 		cmd->in = data.infile;
 		if (!loop_process(&data, &pids, &cmd))
-			return (free_all(&data, &cmd), 1);
+			return (1);
 		wait_fct(&pids, &data, &cmd);
 	}
 }
