@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 15:00:50 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 11:05:09 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int					parsing_here_doc(t_parsing *data, char **argv, int argc,
 						char **env);
 int					ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd);
 void				standart_input(char **argv, t_parsing *data);
+// char				*ttrim1(char *s);
 
 #endif

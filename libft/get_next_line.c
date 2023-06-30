@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 16:15:10 by aducobu           #+#    #+#             */
-/*   Updated: 2023/05/27 02:06:26 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 11:19:35 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,13 @@ char	*create_stash(char *stash, int fd, char *buf)
 	return (stash);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char *to_find)
 {
 	char		*ligne;
 	static char	*stash;
 	char		*buf;
-
+	char		*inter;
+	
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (NULL);
@@ -111,5 +112,10 @@ char	*get_next_line(int fd)
 		return (free(ligne), NULL);
 	if (!ligne)
 		return (free(stash), NULL);
-	return (ligne);
+	inter = ft_substr(ligne, 0, ft_strlen(ligne) - 1);
+	if (!inter)
+		return (ft_printf("ERREUR\n"), NULL);
+	if (ft_strcmp(inter, to_find) == 0)
+		return (free(stash), free(inter), free(ligne), NULL);
+	return (free(inter), ligne);
 }

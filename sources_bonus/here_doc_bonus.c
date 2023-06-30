@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 09:35:29 by aurore            #+#    #+#             */
-/*   Updated: 2023/06/29 15:02:04 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 11:19:59 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd)
 	t_pid		*pids;
 
 	pids = NULL;
+	unlink(".here_doc");
 	initialise_data(&data, argc, argv, env);
 	if (!parsing_here_doc(&data, argv, argc, env))
 		return (error_free(&data, cmd), ft_printf("-> Here_doc\n"), 1);
@@ -69,22 +70,15 @@ int	ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd)
 void	standart_input(char **argv, t_parsing *data)
 {
 	char	*lign;
-	char	*inter;
 
 	lign = "ok";
-	while (lign)
+	while (1)
 	{
 		ft_putstr_fd("here_doc>", 1);
-		lign = get_next_line(0);
-		if (lign)
-		{
-			inter = ft_substr(lign, 0, ft_strlen(lign) - 1);
-			if (ft_strcmp(inter, argv[2]) != 0)
-				ft_putstr_fd(lign, data->here_doc_file);
-			else
-				break ;
-			free(lign);
-			free(inter);
-		}
+		lign = get_next_line(0, argv[2]);
+		if(!lign)
+			break;
+		ft_putstr_fd(lign, data->here_doc_file);
+		free(lign);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 14:57:26 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/06/30 10:06:26 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void	error_free(t_parsing *data, t_cmd **cmd)
 		free(data->middle_cmd_path);
 	if (cmd)
 		ft_lstclear_cmd(cmd);
+	if (data->infile > 1)
+		close(data->infile);
+	if (data->outfile > 1)
+		close(data->outfile);
 }
 
 void	free_tab(char **tab)

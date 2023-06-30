@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:46:29 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/29 10:19:44 by aurore           ###   ########.fr       */
+/*   Updated: 2023/06/30 10:34:56 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char				*ft_strstr(char *str, char *to_find);
 #  define BUFFER_SIZE 42
 # endif
 
-char				*get_next_line(int fd);
+char				*get_next_line(int fd, char *to_find);
 char				*clean_stash(char *stash);
 void				modif_stash(char *stash);
 int					is_new_line(char *line);

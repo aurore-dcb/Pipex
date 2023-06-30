@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aurore <aurore@student.42.fr>              +#+  +:+       +#+         #
+#    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/29 11:50:04 by aurore           ###   ########.fr        #
+#    Updated: 2023/06/30 11:09:50 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ libft/libft.a:
 ${NAME}: objects ${OBJS} libft/libft.a Makefile
 	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT_LIB}
 
-bonus: objects_bonus ${OBJS_bonus} libft/libft.a Makefile
+bonus: Makefile libft/libft.a Makefile objects_bonus ${OBJS_bonus} 
 	${CC} ${CFLAGS} -o ${NAME} ${OBJS_bonus} ${LIBFT_LIB}
 
 objects:
