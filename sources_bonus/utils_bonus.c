@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:14:06 by aducobu           #+#    #+#             */
-/*   Updated: 2023/07/03 10:17:19 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:34:10 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	parsing(int argc, char **argv, char **env, t_parsing *data)
 	if (data->outfile == -1)
 	{
 		close(data->infile);
-		return (ft_printf("Error -> Can't create/open file\n"), 0);
+		ft_printf("Error -> Can't create/open file\n");
+		return (0);
 	}
 	return (1);
 }

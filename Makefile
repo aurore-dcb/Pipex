@@ -6,7 +6,7 @@
 #    By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/27 09:09:28 by aducobu           #+#    #+#              #
-#    Updated: 2023/06/30 13:21:46 by aducobu          ###   ########.fr        #
+#    Updated: 2023/07/03 10:49:39 by aducobu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = 			pipex
 SRCS = 			sources/main.c \
 				sources/get_paths.c \
 				sources/frees.c \
+				sources/frees2.c \
 				sources/get_cmd.c \
 				sources/utils.c \
 				sources/lst_cmd.c \
@@ -23,6 +24,7 @@ SRCS = 			sources/main.c \
 SRCS_bonus = 	sources_bonus/main_bonus.c \
 				sources_bonus/get_paths_bonus.c \
 				sources_bonus/frees_bonus.c \
+				sources_bonus/frees2_bonus.c \
 				sources_bonus/get_cmd_bonus.c \
 				sources_bonus/utils_bonus.c \
 				sources_bonus/lst_cmd_bonus.c \

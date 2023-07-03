@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 09:51:17 by aducobu           #+#    #+#             */
-/*   Updated: 2023/07/03 10:27:05 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:50:53 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ int	loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd)
 		}
 		data->middle_cmd_path = find_path(data->paths, data->middle_cmd[0]);
 		if (!data->middle_cmd_path)
-			return (error_free(data, cmd, pids), ft_printf("Error -> Command\n"), 0);
+			return (error_free(data, cmd, pids),
+				ft_printf("Error-> Command\n"), 0);
 		if (!ft_process(data, pids, tmp))
-			return (error_free(data, cmd, pids), ft_printf("Error -> Process\n"), 0);
+			return (error_free(data, cmd, pids),
+				ft_printf("Error-> Process\n"), 0);
 		free_tab(data->middle_cmd);
 		free(data->middle_cmd_path);
 		tmp = tmp->next;
@@ -60,7 +62,6 @@ int	ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd)
 	else
 	{
 		ft_lstadd_back_pipex(pids, ft_lstnew_pipex(pid));
-		
 		if (data->fd[1] > 2)
 			close(data->fd[1]);
 		if (cmd->in > 2)

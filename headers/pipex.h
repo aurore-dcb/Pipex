@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurore <aurore@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:10:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/28 18:04:00 by aurore           ###   ########.fr       */
+/*   Updated: 2023/07/03 10:47:03 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,14 @@ char				**get_paths(char **env);
 char				*find_path(char **paths, char *cmd);
 
 // frees.c
-void				error_free(t_parsing *data, t_cmd **cmd);
-void				free_tab(char **tab);
-void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
+void				error_free(t_parsing *data, t_cmd **cmd, t_pid **pids);
 void				free_all(t_parsing *data, t_cmd **cmd);
+void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
+
+// frees2.c
+void				free_tab(char **tab);
 void				ft_lstclear_cmd(t_cmd **lst);
+void				free_pids(t_pid **pids);
 
 // get_cmd.c
 char				*get_cmd(char *s);

@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/30 14:15:41 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:50:21 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,12 @@ char				*find_path(char **paths, char *cmd);
 
 // frees_bonus.c
 void				error_free(t_parsing *data, t_cmd **cmd, t_pid **pids);
-void				free_tab(char **tab);
 void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
 void				free_all(t_parsing *data, t_cmd **cmd);
+
+// frees2_bonus.c
+void				free_tab(char **tab);
+void				free_pids(t_pid **pids);
 void				ft_lstclear_cmd(t_cmd **lst);
 
 // get_cmd_bonus.c
