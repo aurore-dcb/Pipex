@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:11:55 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/30 14:43:53 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:26:49 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,25 @@ void free_pid(t_pid **pids)
 	}
 }
 
-void	error_free(t_parsing *data, t_cmd **cmd, t_pid **pids)
+void free_pids(t_pid **pids)
 {
-	t_pid *tmp;
-	
+	t_pid	*tmp;
+
 	while (*pids)
 	{
 		tmp = *pids;
 		*pids = (*pids)->next;
 		free(tmp);
 	}
-	free(*pids);
+}
+
+void	error_free(t_parsing *data, t_cmd **cmd, t_pid **pids)
+{
+	free_pids(pids);
+	if (data->fd[0] > 1)
+		close(data->fd[0]);
+	if (data->fd[1] > 1)
+		close(data->fd[1]);
 	if (data->paths)
 		free_tab(data->paths);
 	if (data->middle_cmd)
@@ -56,9 +64,6 @@ void	error_free(t_parsing *data, t_cmd **cmd, t_pid **pids)
 		close(data->here_doc_file);
 		unlink(".here_doc");
 	}
-	// wait_fct(pids, data, cmd);
-	// exit(127);
-	// free_pid(pids);
 }
 
 void	free_all(t_parsing *data, t_cmd **cmd)
@@ -107,7 +112,6 @@ void	wait_fct(t_pid **pids, t_parsing *data, t_cmd **cmd)
 	free(*pids);
 	free_all(data, cmd);
 }
-
 
 void	ft_lstclear_cmd(t_cmd **lst)
 {

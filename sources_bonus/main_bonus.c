@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:13:20 by aducobu           #+#    #+#             */
-/*   Updated: 2023/06/30 14:15:46 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:26:31 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	initialise_data(t_parsing *data, int argc, char **argv, char **env)
 	data->here_doc_file = -1;
 	data->middle_cmd = NULL;
 	data->middle_cmd_path = NULL;
+	data->fd[0] = 0;
+	data->fd[1] = 0;
 }
 
 int	main(int argc, char **argv, char **env)
