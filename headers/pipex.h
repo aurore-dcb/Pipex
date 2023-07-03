@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:10:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/07/03 10:47:03 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:55:35 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,24 @@ typedef struct s_pid
 	struct s_pid	*next;
 }					t_pid;
 
-// get_path.c
-char				*ft_trim(char *s);
-char				**get_paths(char **env);
-char				*find_path(char **paths, char *cmd);
-
 // frees.c
 void				error_free(t_parsing *data, t_cmd **cmd, t_pid **pids);
 void				free_all(t_parsing *data, t_cmd **cmd);
 void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
 
 // frees2.c
-void				free_tab(char **tab);
 void				ft_lstclear_cmd(t_cmd **lst);
 void				free_pids(t_pid **pids);
+void				free_tab(char **tab);
 
 // get_cmd.c
 char				*get_cmd(char *s);
 char				**get_args(char *cmd);
 
-// parsing.c
-int					parsing(int argc, char **argv, char **env, t_parsing *data);
-t_pid				*ft_lstnew_pipex(pid_t pid);
-void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
+// get_path.c
+char				*ft_trim(char *s);
+char				**get_paths(char **env);
+char				*find_path(char **paths, char *cmd);
 
 // lst_cmd.c
 t_cmd				*ft_lstnew_cmd(char *arg);
@@ -78,5 +73,10 @@ int					create_list_cmd(t_cmd **cmd, int argc, char **argv);
 int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
 int					ft_child(t_cmd *cmd, t_parsing *data);
+
+// utils.c
+int					parsing(int argc, char **argv, char **env, t_parsing *data);
+t_pid				*ft_lstnew_pipex(pid_t pid);
+void				ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
 
 #endif

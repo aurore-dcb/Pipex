@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:43:22 by aducobu           #+#    #+#             */
-/*   Updated: 2023/07/03 10:50:21 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:58:48 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,31 @@ typedef struct s_pid
 void				initialise_data(t_parsing *data, int argc, char **argv,
 						char **env);
 
-// get_path_bonus.c
-char				*ft_trim(char *s);
-char				**get_paths(char **env);
-char				*find_path(char **paths, char *cmd);
-
 // frees_bonus.c
 void				error_free(t_parsing *data, t_cmd **cmd, t_pid **pids);
-void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
 void				free_all(t_parsing *data, t_cmd **cmd);
+void				wait_fct(t_pid **pids, t_parsing *data, t_cmd **cdm);
 
 // frees2_bonus.c
-void				free_tab(char **tab);
 void				free_pids(t_pid **pids);
+void				free_tab(char **tab);
 void				ft_lstclear_cmd(t_cmd **lst);
 
 // get_cmd_bonus.c
 char				*get_cmd(char *s);
 char				**get_args(char *cmd);
 
-// parsing_bonus.c
-int					parsing(int argc, char **argv, char **env, t_parsing *data);
-t_pid				*ft_lstnew_pipex(pid_t pid);
-int					ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
+// get_path_bonus.c
+char				*ft_trim(char *s);
+char				**get_paths(char **env);
+char				*find_path(char **paths, char *cmd);
+
+// here_doc_bonus.c
+int					is_here_doc(int argc, char **argv);
+int					parsing_here_doc(t_parsing *data, char **argv, int argc,
+						char **env);
+int					ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd);
+void				standart_input(char **argv, t_parsing *data);
 
 // lst_cmd_bonus.c
 t_cmd				*ft_lstnew_cmd(char *arg);
@@ -83,12 +85,9 @@ int					loop_process(t_parsing *data, t_pid **pids, t_cmd **cmd);
 int					ft_process(t_parsing *data, t_pid **pids, t_cmd *cmd);
 int					ft_child(t_cmd *cmd, t_parsing *data);
 
-// here_doc_bonus.c
-int					is_here_doc(int argc, char **argv);
-int					parsing_here_doc(t_parsing *data, char **argv, int argc,
-						char **env);
-int					ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd);
-void				standart_input(char **argv, t_parsing *data);
-// char				*ttrim1(char *s);
+// utils_bonus.c
+int					parsing(int argc, char **argv, char **env, t_parsing *data);
+t_pid				*ft_lstnew_pipex(pid_t pid);
+int					ft_lstadd_back_pipex(t_pid **lst, t_pid *new);
 
 #endif

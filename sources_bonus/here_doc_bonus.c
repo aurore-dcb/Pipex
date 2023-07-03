@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 09:35:29 by aurore            #+#    #+#             */
-/*   Updated: 2023/06/30 13:55:14 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:57:30 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	ft_here_doc(char **argv, int argc, char **env, t_cmd **cmd)
 		return (error_free(&data, cmd, &pids), 1);
 	data.here_doc_file = open(".here_doc", O_RDONLY);
 	if (data.here_doc_file == -1)
-		return (error_free(&data, cmd, &pids), ft_printf("Error -> Here_doc\n"), 1);
+		return (error_free(&data, cmd, &pids), ft_printf("Error -> Here_doc\n"),
+			1);
 	(*cmd)->in = data.here_doc_file;
 	if (!loop_process(&data, &pids, cmd))
 		return (1);

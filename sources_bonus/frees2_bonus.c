@@ -6,14 +6,14 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:48:02 by aducobu           #+#    #+#             */
-/*   Updated: 2023/07/03 10:49:19 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:59:16 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/pipex.h"
 #include "../libft/libft.h"
 
-void free_pids(t_pid **pids)
+void	free_pids(t_pid **pids)
 {
 	t_pid	*tmp;
 

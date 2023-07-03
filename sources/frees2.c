@@ -6,7 +6,7 @@
 /*   By: aducobu <aducobu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:45:04 by aducobu           #+#    #+#             */
-/*   Updated: 2023/07/03 10:46:02 by aducobu          ###   ########.fr       */
+/*   Updated: 2023/07/03 10:53:13 by aducobu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_lstclear_cmd(t_cmd **lst)
 	}
 }
 
-void free_pids(t_pid **pids)
+void	free_pids(t_pid **pids)
 {
 	t_pid	*tmp;
 
